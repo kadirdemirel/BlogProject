@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,25 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+
     public class CategoryManager : ICategoryService
     {
+        CategoryRepository _categoryRepository;
+        public CategoryManager(CategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
         public void Add(Category category)
         {
-            throw new NotImplementedException();
+            if (category.CategoryName != "" && category.CategoryDescription != "" && category.CategoryName.Length >= 3 && category.CategoryStatus == true)
+            {
+                _categoryRepository.Add(category);
+            }
+            else
+            {
+                //hata mesajı
+            }
+
         }
 
         public void Delete(Category category)
