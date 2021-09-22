@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,10 +11,15 @@ namespace PresentationLayer.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+        //CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+        ICategoryService _categoryService;
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
         public IActionResult Index()
         {
-            var getAll = categoryManager.GetAll();
+            var getAll = _categoryService.GetAll();
             return View(getAll);
         }
     }
