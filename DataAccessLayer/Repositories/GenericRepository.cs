@@ -37,6 +37,12 @@ namespace DataAccessLayer.Repositories
             return context.Set<T>().ToList();
         }
 
+        public List<T> GetAll(Expression<Func<T, bool>> filter)
+        {
+            using var context = new Context();
+            return context.Set<T>().Where(filter).ToList();
+        }
+
         public void Update(T entity)
         {
             using var context = new Context();

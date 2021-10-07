@@ -16,8 +16,14 @@ namespace PresentationLayer.Controllers
         }
         public IActionResult Index()
         {
-            var getAll = _blogService.GetAll();
+            var getAll = _blogService.GetListWithCategory();
             return View(getAll);
+        }
+
+        public IActionResult BlogDetails(int id)
+        {
+            var blogDetails = _blogService.GetBlogById(id);
+            return View(blogDetails);
         }
     }
 }
