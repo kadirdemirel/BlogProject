@@ -94,7 +94,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         </div>
                     }
-                    @await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")
+                    @await Component.InvokeAsync("CommentListByBlog",new { id=ViewBag.id})
+                    @*@await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")*@
                     @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
                 </div>
 
@@ -114,25 +115,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </form>
 
                         </div>
+                        @await Component.InvokeAsync("CategoryList")
                         <div class="tech-btm">
-                            <h4>Categories</h4>
-                            <ul class="list-group single">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Cras justo odio
-                                    <span class="badge badge-primary badge-pill">14</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Dapibus ac facilisis in
-                                    <span class="badge badge-primary badge-pill">2</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Morbi leo risus
-                                    <span class="badge badge-primary badge-pill">1</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tech-btm">
-                            <h4>Top stories of the week</h4>
+                            <h4>Yazarın Diğer Yazıları</h4>
 
                             <div class="blog-grids row mb-3">
                                 <div class="col-md-5 blog-grid-left">
@@ -196,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                         <div class="single-gd tech-btm">
-                            <h4>Recent Post</h4>
+                            <h4>Son Eklenen Post</h4>
                             <div class="blog-grids">
                                 <div class="blog-grid-left">
                                     <a href="single.html">

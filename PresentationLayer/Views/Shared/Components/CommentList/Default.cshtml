@@ -1,0 +1,7 @@
+﻿@model IEnumerable<PresentationLayer.Models.CommentUser>
+
+@foreach (var item in Model)
+{
+    <p>@item.ID</p>
+    <p>@item.UserName</p>
+}

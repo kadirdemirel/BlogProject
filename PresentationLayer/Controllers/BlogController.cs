@@ -22,6 +22,7 @@ namespace PresentationLayer.Controllers
 
         public IActionResult BlogDetails(int id)
         {
+            ViewBag.id = id;
             var blogDetails = _blogService.GetBlogById(id);
             return View(blogDetails);
         }
