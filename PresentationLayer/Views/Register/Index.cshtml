@@ -16,35 +16,35 @@
 
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label for="validationCustom01">Adınız</label>
-                            @Html.TextBoxFor(x=>x.WriterName)
-                            @Html.ValidationMessageFor(x=>x.WriterName)
+                            <label for="validationCustom01">Ad</label>
+                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
                             @*<input type="text" class="form-control" id="validationDefault01" name="WriterName" placeholder="" required="">*@
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="validationCustom02">Email Adresiniz</label>
-                            @Html.TextBoxFor(x => x.WriterMail)
-                            @Html.ValidationMessageFor(x => x.WriterMail)
+                            <label for="validationCustom02">Email Adresi</label>
+                            @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
                             @*<input type="email" class="form-control" id="validationDefault02" name="WriterMail" placeholder="" required="">*@
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword1 mb-2">Şifre</label>
-                            @Html.TextBoxFor(x => x.Password)
-                            @Html.ValidationMessageFor(x => x.Password)
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
                             @*<input type="password" class="form-control" id="password1" name="Password" placeholder="" required="">*@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword2 mb-2">Şifre Tekrar</label>
-                            @Html.TextBoxFor(x => x.Password)
-                            @Html.ValidationMessageFor(x => x.Password)
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
                             @*<input type="password" class="form-control" id="password2" placeholder="" required="">*@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword2 mb-2">Görsel Dosya Yolu</label>
-                            @Html.TextBoxFor(x => x.WriterImage)
-                            @Html.ValidationMessageFor(x => x.WriterImage)
+                            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.WriterImage, "", new { @class = "text-danger" })
                             @*<input type="text" class="form-control" id="password2" name="WriterImage" placeholder="" required="">*@
                         </div>
 
@@ -61,7 +61,7 @@
     <br />
     <script>
         $('#btn1').click(function () {
-            swal("Sitemiz üzerinde vermiş olduğunuz tüm bilgiler kaydedilip saklanacaktır ve 3.şahıslarla asla paylaşılmayacaktır.");
+            swal("Site Kabul Şartları","Sitemiz üzerinde vermiş olduğunuz tüm bilgiler kaydedilip saklanacaktır ve 3.şahıslarla asla paylaşılmayacaktır.");
 
         });
     </script>
