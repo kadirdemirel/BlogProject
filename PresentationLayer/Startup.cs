@@ -36,6 +36,8 @@ namespace PresentationLayer
             services.AddSingleton<ICommentDal, EfCommentRepository>();
             services.AddSingleton<IWriterService, WriterManager>();
             services.AddSingleton<IWriterDal, EfWriterRepository>();
+            services.AddSingleton<INewsLetterService, NewsLetterManager>();
+            services.AddSingleton<INewsLetterDal, EfNewsLetterRepository>();
             
         }
 
@@ -52,6 +54,11 @@ namespace PresentationLayer
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //app.UseStatusCodePages();//Durum kodlarý için ekledik.
+
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Page404", "?code={0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

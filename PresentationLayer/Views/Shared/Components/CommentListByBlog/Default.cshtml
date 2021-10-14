@@ -7,16 +7,28 @@
     {
 
 
-    <div class="media">
-        <img src="~/BlogProjectTema/images/t1.jpg" alt="" class="img-fluid" />
-        <div class="media-body">
-            <h5 class="mt-0">@item.CommentUserName</h5>
-            <p>
-               @item.CommentContent
-            </p>
+        <div class="media">
+            <img src="~/BlogProjectTema/images/t1.jpg" alt="" class="img-fluid" />
+            <div class="media-body">
 
 
+                <h5 class="mt-0">@item.CommentUserName</h5>
+                @if (item.CommentContent.Count() < 0)
+                {
+
+                    <p>
+                        Henüz
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @item.CommentContent
+                    </p>
+                }
+
+
+            </div>
         </div>
-    </div>
     }
 </div>

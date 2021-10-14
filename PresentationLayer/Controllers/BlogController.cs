@@ -24,6 +24,7 @@ namespace PresentationLayer.Controllers
         {
             ViewBag.id = id;
             var blogDetails = _blogService.GetBlogById(id);
+            
             return View(blogDetails);
         }
     }

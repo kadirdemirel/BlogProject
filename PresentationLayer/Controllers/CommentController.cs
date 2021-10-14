@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,24 @@ namespace PresentationLayer.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public PartialViewResult AddComment()
         {
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult AddComment(Comment comment)
+        {
+            comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            comment.CommentStatus = true;
+            comment.BlogID = 2;
+            _commentService.Add(comment);
             return PartialView();
         }
         public PartialViewResult CommentListByBlog(int id)
         {
             var list = _commentService.GetAll(id);
+            
             return PartialView(list);
         }
     }
