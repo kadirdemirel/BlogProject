@@ -40,6 +40,10 @@ namespace PresentationLayer
             services.AddSingleton<INewsLetterDal, EfNewsLetterRepository>();
             services.AddSingleton<ICityService, CityManager>();
             services.AddSingleton<ICityDal, EfCityRepository>();
+            services.AddSingleton<IAboutService, AboutManager>();
+            services.AddSingleton<IAboutDal, EfAboutRepository>();
+            services.AddSingleton<IContactService, ContactManager>();
+            services.AddSingleton<IContactDal, EfContactRepository>();
             
         }
 
