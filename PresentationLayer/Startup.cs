@@ -38,6 +38,8 @@ namespace PresentationLayer
             services.AddSingleton<IWriterDal, EfWriterRepository>();
             services.AddSingleton<INewsLetterService, NewsLetterManager>();
             services.AddSingleton<INewsLetterDal, EfNewsLetterRepository>();
+            services.AddSingleton<ICityService, CityManager>();
+            services.AddSingleton<ICityDal, EfCityRepository>();
             
         }
 

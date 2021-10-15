@@ -13,12 +13,10 @@
 
 
                 <h5 class="mt-0">@item.CommentUserName</h5>
-                @if (item.CommentContent.Count() < 0)
+                @if (item.CommentContent == null)
                 {
+                    <p>a</p>
 
-                    <p>
-                        Henüz
-                    </p>
                 }
                 else
                 {

@@ -16,8 +16,10 @@ namespace EntityLayer.Concrete
         public string WriterImage { get; set; }
         public string WriterMail { get; set; }
         public string Password { get; set; }
+        public string RepeatPassword { get; set; }
         public bool WriterStatus { get; set; }
         public List<Blog> Blogs { get; set; }
+        public List<City> Cities { get; set; }
 
     }
 }
