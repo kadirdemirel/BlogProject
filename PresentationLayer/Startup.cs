@@ -2,9 +2,12 @@ using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,23 +31,54 @@ namespace PresentationLayer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSession();
+
             services.AddSingleton<ICategoryService, CategoryManager>();
             services.AddSingleton<ICategoryDal, EfCategoryRepository>();
+
             services.AddSingleton<IBlogService, BlogManager>();
             services.AddSingleton<IBlogDal, EfBlogRepository>();
+
             services.AddSingleton<ICommentService, CommentManager>();
             services.AddSingleton<ICommentDal, EfCommentRepository>();
+
             services.AddSingleton<IWriterService, WriterManager>();
             services.AddSingleton<IWriterDal, EfWriterRepository>();
+
             services.AddSingleton<INewsLetterService, NewsLetterManager>();
             services.AddSingleton<INewsLetterDal, EfNewsLetterRepository>();
+
             services.AddSingleton<ICityService, CityManager>();
             services.AddSingleton<ICityDal, EfCityRepository>();
+
             services.AddSingleton<IAboutService, AboutManager>();
             services.AddSingleton<IAboutDal, EfAboutRepository>();
+
             services.AddSingleton<IContactService, ContactManager>();
             services.AddSingleton<IContactDal, EfContactRepository>();
-            
+
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                           .RequireAuthenticatedUser()//Kullanýcý authentica et
+                           .Build();//oluþtur inþa et
+                config.Filters.Add(new AuthorizeFilter(policy));
+
+
+            });
+
+            services.AddMvc();
+            services.AddAuthentication(
+                CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(x =>
+                {
+                    x.LoginPath = "/Login/Index";
+                });
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +101,8 @@ namespace PresentationLayer
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
