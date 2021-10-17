@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         IBlogService _blogService;
@@ -27,5 +29,7 @@ namespace PresentationLayer.Controllers
             
             return View(blogDetails);
         }
+
+        
     }
 }

@@ -9,9 +9,14 @@ namespace PresentationLayer.Controllers
 {
     public class WriterController : Controller
     {
-    
+   
         [AllowAnonymous]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Test()
         {
             return View();
         }
