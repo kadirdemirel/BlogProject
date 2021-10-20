@@ -31,6 +31,11 @@ namespace BusinessLayer.Concrete
             return _commentDal.GetAll(x => x.BlogID == id);
         }
 
+        public List<Comment> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Comment GetById(int commentId)
         {   
             return _commentDal.Get(commentId);

@@ -9,7 +9,7 @@ namespace PresentationLayer.Controllers
 {
     public class WriterController : Controller
     {
-   
+
         [AllowAnonymous]
         public IActionResult Index()
         {
@@ -19,6 +19,16 @@ namespace PresentationLayer.Controllers
         public IActionResult Test()
         {
             return View();
+        }
+        [AllowAnonymous]
+        public PartialViewResult WriterNavBarPartial()
+        {
+            return PartialView(); 
+        }
+        [AllowAnonymous]
+        public PartialViewResult WriterFooterPartial()
+        {
+            return PartialView();
         }
     }
 }
