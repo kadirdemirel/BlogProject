@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
             return _categoryDal.GetAll();
         }
 
+        public List<Category> GetAll(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Category GetById(int categoryId)
         {
             return _categoryDal.Get(categoryId);
