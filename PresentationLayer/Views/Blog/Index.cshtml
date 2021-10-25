@@ -16,39 +16,41 @@
                     {
 
 
-                    <div class="col-lg-4 card">
-                        <a href="single.html">
-                            <img src="@item.BlogImage" class="card-img-top img-fluid" alt="">
-                        </a>
-                        <div class="card-body">
-                            <ul class="blog-icons my-4">
-                                <li>
-                                    <a href="#">
-                                        <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"));
-                                    </a>
-                                </li>
-                                <li class="mx-2">
-                                    <a href="#">
-                                        <i class="far fa-comment"></i> 21
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fas fa-eye"></i> @item.Category.CategoryName
-                                    </a>
-                                </li>
+                        <div class="col-lg-4 card">
+                            <a href="single.html">
+                                <img src="@item.BlogImage" class="card-img-top img-fluid" alt="">
+                            </a>
+                            <div class="card-body">
+                                <ul class="blog-icons my-4">
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"));
+                                        </a>
+                                    </li>
+                                    <li class="mx-2">
+                                        <a href="#">
+                                            <i class="far fa-comment"></i> 21
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-eye"></i> @item.Category.CategoryName
+                                        </a>
+                                    </li>
 
-                            </ul>
-                            <h5 class="card-title">
-                                <a href="/Blog/BlogDetails/@item.BlogID/">@item.BlogTitle</a>
-                            </h5>
-                            <p class="card-text mb-3">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,80).LastIndexOf(" "))... </p>
-                            <a href="/Blog/BlogDetails/@item.BlogID/" class="btn btn-primary read-m">Devamını Oku...</a>
+                                </ul>
+                                <h5 class="card-title">
+                                    <a href="/Blog/BlogDetails/@item.BlogID/">@item.BlogTitle</a>
+                                </h5>
+                                @*<p class="card-text mb-3">@item.BlogContent.Substring(0, item.BlogContent.Substring(0, 250).LastIndexOf(" "))...</p>*@
+                                <p class="card-text mb-3">@item.BlogContent.Substring(0, Math.Min(item.BlogContent.Length, 80))...</p>
+
+                                <a href="/Blog/BlogDetails/@item.BlogID/" class="btn btn-primary read-m">Devamını Oku...</a>
+                            </div>
                         </div>
-                    </div>
                     }
-                <!--//left-->
+                    <!--//left-->
+                </div>
             </div>
         </div>
-    </div>
 </section>
