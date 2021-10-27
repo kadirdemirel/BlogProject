@@ -80,6 +80,36 @@ namespace PresentationLayer.Controllers
             }
             return View();
         }
+        public IActionResult DeleteBlog(int id)
+        {
+            var blogItem = _blogService.GetById(id);
+            _blogService.Delete(blogItem);
+            return RedirectToAction("BlogListByWriter");
+        }
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            var blogItem = _blogService.GetById(id);
+            List<SelectListItem> selectListItems = (from x in _categoryService.GetAll()
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.CategoryName,
+                                                        Value = x.CategoryID.ToString()
+
+
+                                                    }).ToList();
+            ViewBag.categories = selectListItems;
+            return View(blogItem);
+        }
+        [HttpPost]
+        public IActionResult EditBlog(Blog blog)
+        {
+            blog.WriterID = 1;
+            blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            blog.BlogStatus = true;
+            _blogService.Update(blog);
+            return RedirectToAction("BlogListByWriter");
+        }
 
     }
 }
