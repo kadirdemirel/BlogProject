@@ -1,0 +1,110 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+<div class="row">
+    <div class="col-md-7 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Project Status</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Kategori Adı </th>
+                                <th> Durum </th>
+                                <th> İşlemler </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+
+                                <tr>
+                                    <td> @item.CategoryID </td>
+                                    <td> @item.CategoryName </td>
+                                    @if (item.CategoryStatus == true)
+                                    {
+                                        <td>Aktif</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Pasif</td>
+                                    }
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-white">Todo</h4>
+                <div class="add-items d-flex">
+                    <input type="text" class="form-control todo-list-input" placeholder="Yapılacaklar Listesi">
+                    <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task">Ekle</button>
+                </div>
+                <div class="list-wrapper">
+                    <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                        <li>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" type="checkbox"> Meeting with Alisa
+                                </label>
+                            </div>
+                            <i class="remove mdi mdi-close-circle-outline"></i>
+                        </li>
+                        <li class="completed">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" type="checkbox" checked> Call John
+                                </label>
+                            </div>
+                            <i class="remove mdi mdi-close-circle-outline"></i>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" type="checkbox"> Create invoice
+                                </label>
+                            </div>
+                            <i class="remove mdi mdi-close-circle-outline"></i>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" type="checkbox"> Print Statements
+                                </label>
+                            </div>
+                            <i class="remove mdi mdi-close-circle-outline"></i>
+                        </li>
+                        <li class="completed">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" type="checkbox" checked> Prepare for presentation
+                                </label>
+                            </div>
+                            <i class="remove mdi mdi-close-circle-outline"></i>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="checkbox" type="checkbox"> Pick up kids from school
+                                </label>
+                            </div>
+                            <i class="remove mdi mdi-close-circle-outline"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
