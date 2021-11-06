@@ -15,13 +15,7 @@
                 <i class="mdi mdi-home"></i>
             </span> Dashboard
         </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-            </ul>
-        </nav>
+  
     </div>
     <div class="row">
         <div class="col-md-4 stretch-card grid-margin">
@@ -31,7 +25,7 @@
                     <h4 class="font-weight-normal mb-3">
                         Toplam Blog Sayısı <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">0</h2>
+                    <h2 class="mb-5">    @ViewBag.toplamBlogSayisi</h2>
                     <h6 class="card-text">Core 5.0 Proje Kampı</h6>
                 </div>
             </div>
@@ -43,7 +37,7 @@
                     <h4 class="font-weight-normal mb-3">
                         Blog Sayınız <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">0</h2>
+                    <h2 class="mb-5">  @ViewBag.yazarBlogSayisi</h2>
                     <h6 class="card-text">Core 5.0 Proje Kampı</h6>
                 </div>
             </div>
@@ -53,9 +47,9 @@
                 <div class="card-body">
                     <img src="~/writer/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">
-                        Son 7 Gündeki Blog Sayısı <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                        Toplam Kategori Sayısı  <i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">0</h2>
+                    <h2 class="mb-5">@ViewBag.toplamKategoriSayisi</h2>
                     <h6 class="card-text">Core 5.0 Proje Kampı</h6>
                 </div>
             </div>
