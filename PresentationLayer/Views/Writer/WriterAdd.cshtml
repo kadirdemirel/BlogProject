@@ -1,0 +1,45 @@
+﻿@model PresentationLayer.Models.AddProfileImage
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<form class="form-group" method="post" enctype="multipart/form-data">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazar Profil Bilgileri Düzenleme</h4>
+                @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+                <br />
+
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Yazar Adı</label>
+                        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Email Adresi</label>
+                        @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Şifre</label>
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Yazar Görsel</label>
+                        <input type="file" name="WriterImage" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Yazar Hakkında</label>
+                        @Html.TextAreaFor(x => x.WriterAbout, 10, 3, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
