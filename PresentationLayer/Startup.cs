@@ -58,6 +58,9 @@ namespace PresentationLayer
             services.AddSingleton<IContactService, ContactManager>();
             services.AddSingleton<IContactDal, EfContactRepository>();
 
+            services.AddSingleton<INotificationService, NotificationManager>();
+            services.AddSingleton<INotificationDal, EfNotificationRepository>();
+
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
