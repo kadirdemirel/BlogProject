@@ -10,16 +10,15 @@ namespace PresentationLayer.ViewComponents.Writer
 
     public class WriterMessageNotification : ViewComponent
     {
-        IMessageService _messageService;
-        public WriterMessageNotification(IMessageService messageService)
+        IMessageTwoService _messageService;
+        public WriterMessageNotification(IMessageTwoService messageService)
         {
             _messageService = messageService;
         }
         public IViewComponentResult Invoke()
         {
-            string mail;
-            mail = "deneme@gmail.com";
-            var inbox = _messageService.GetInboxListByWriter(mail);
+            int id = 2;
+            var inbox = _messageService.GetInboxListByWriter(id);
             return View(inbox);
         }
     }

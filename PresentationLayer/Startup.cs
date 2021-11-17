@@ -32,7 +32,7 @@ namespace PresentationLayer
         {
             services.AddControllersWithViews();
 
-        //    services.AddSession();
+            //    services.AddSession();
 
             services.AddSingleton<ICategoryService, CategoryManager>();
             services.AddSingleton<ICategoryDal, EfCategoryRepository>();
@@ -63,6 +63,10 @@ namespace PresentationLayer
 
             services.AddSingleton<IMessageService, MessageManager>();
             services.AddSingleton<IMessageDal, EfMessageRepository>();
+
+            services.AddSingleton<IMessageTwoService, MessageTwoManager>();
+            services.AddSingleton<IMessageTwoDal, EfMessageTwoRepository>();
+
 
             services.AddMvc(config =>
             {
@@ -111,7 +115,7 @@ namespace PresentationLayer
 
             app.UseAuthentication();
 
-        //    app.UseSession();
+            //    app.UseSession();
 
             app.UseRouting();
 
