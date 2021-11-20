@@ -9,6 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IMessageTwoDal : IEntityRepository<MessageTwo>
     {
-
+        List<MessageTwo> GetListWithMessageTwoByWriter(int id);
     }
 }

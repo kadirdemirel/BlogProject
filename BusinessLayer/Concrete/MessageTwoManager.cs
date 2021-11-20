@@ -39,12 +39,12 @@ namespace BusinessLayer.Concrete
 
         public MessageTwo GetById(int id)
         {
-            throw new NotImplementedException();
+            return _messageTwoDal.Get(id);
         }
 
         public List<MessageTwo> GetInboxListByWriter(int id)
         {
-            return _messageTwoDal.GetAll(x => x.Receiver == id);
+            return _messageTwoDal.GetListWithMessageTwoByWriter(id);
         }
 
         public void Update(MessageTwo messageTwo)

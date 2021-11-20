@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IMessageDal : IEntityRepository<Message>
     {
+     
     }
 }
