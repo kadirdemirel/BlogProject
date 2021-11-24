@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules.FluentValidation;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -16,14 +17,21 @@ namespace PresentationLayer.Controllers
     public class WriterController : Controller
     {
         IWriterService _writerService;
+
         public WriterController(IWriterService writerService)
         {
             _writerService = writerService;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize]
         public IActionResult Index()
         {
+            var userMail = User.Identity.Name;
+            ViewBag.userName = userMail;
+            Context context = new Context();
+            var writerName = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.writer = writerName;
             return View();
         }
 
@@ -41,14 +49,18 @@ namespace PresentationLayer.Controllers
         {
             return PartialView();
         }
-        [AllowAnonymous]
+
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var writer = _writerService.GetById(1);
+            var userMail = User.Identity.Name;
+            ViewBag.userName = userMail;
+            Context context = new Context();
+            var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            var writer = _writerService.GetById(writerID);
             return View(writer);
         }
-        [AllowAnonymous]
+
         [HttpPost]
         public IActionResult WriterEditProfile(Writer writer)
         {

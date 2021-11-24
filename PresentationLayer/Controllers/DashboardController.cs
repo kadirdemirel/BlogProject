@@ -18,7 +18,7 @@ namespace PresentationLayer.Controllers
             _blogService = blogService;
       
         }
-        [AllowAnonymous]
+  
         public IActionResult Index()
         {
             Context context = new Context();
