@@ -50,5 +50,11 @@ namespace PresentationLayer.Areas.Admin.Controllers
             }
             return View();
         }
+        public IActionResult CategoryDelete(int id)
+        {
+            var categoryValue = _categoryService.GetById(id);
+            _categoryService.Delete(categoryValue);
+            return RedirectToAction("Index");
+        }
     }
 }
