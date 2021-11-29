@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using X.PagedList;
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -15,9 +15,10 @@ namespace PresentationLayer.Areas.Admin.Controllers
         {
             _categoryService = categoryService;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-            var categoryList = _categoryService.GetAll();
+            //page:sayfalama işleminin kaçıncı sayfadan başlayacağını belirler.
+            var categoryList = _categoryService.GetAll().ToPagedList(page, 10);
             return View(categoryList);
         }
     }
