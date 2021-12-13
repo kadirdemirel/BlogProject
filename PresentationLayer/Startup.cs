@@ -67,6 +67,9 @@ namespace PresentationLayer
             services.AddSingleton<IMessageTwoService, MessageTwoManager>();
             services.AddSingleton<IMessageTwoDal, EfMessageTwoRepository>();
 
+            services.AddSingleton<IAdminService, AdminManager>();
+            services.AddSingleton<IAdminDal, EfAdminRepository>();
+
 
             services.AddMvc(config =>
             {
