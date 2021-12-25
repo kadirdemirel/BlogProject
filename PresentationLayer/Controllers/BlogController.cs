@@ -59,7 +59,9 @@ namespace PresentationLayer.Controllers
 
                                                     }).ToList();
             ViewBag.categories = selectListItems;
+
             return View();
+
         }
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
