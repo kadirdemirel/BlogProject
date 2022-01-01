@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Areas.Admin.Models
 {
-    public class CategoryModel
+    public class WriterModel
     {
-        public int categoryCount { get; set; }
-        public string categoryname { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

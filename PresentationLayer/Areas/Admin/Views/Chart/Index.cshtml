@@ -25,9 +25,9 @@
                     var Data = chartsdata.jsonlist;
                     var data = new google.visualization.DataTable();
                     data.addColumn('string', 'categoryname');
-                    data.addColumn('number', 'categorycount');
+                    data.addColumn('number', 'categoryCount');
                     for (var i = 0; i < Data.length; i++) {
-                        data.addRow([Data[i].categoryname, Data[i].categorycount]);
+                        data.addRow([Data[i].categoryname, Data[i].categoryCount]);
                     }
                     var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
                     chart.draw(data, {

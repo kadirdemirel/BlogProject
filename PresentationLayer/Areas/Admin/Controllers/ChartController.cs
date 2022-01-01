@@ -20,17 +20,17 @@ namespace PresentationLayer.Areas.Admin.Controllers
             categoryModels.Add(new CategoryModel
             {
                 categoryname = "Teknoloji",
-                categorycount = 10
+                categoryCount = 10
             });
             categoryModels.Add(new CategoryModel
             {
                 categoryname = "Yazılım",
-                categorycount = 8
+                categoryCount = 8
             });
             categoryModels.Add(new CategoryModel
             {
                 categoryname = "Spor",
-                categorycount = 9
+                categoryCount = 9
             });
             return Json(new { jsonlist = categoryModels });
         }
