@@ -17,14 +17,24 @@
 
 @section scripts{
     <script>
+/*        const { writer } = require("repl");*/
+
         $('#btngetlist').click(function () {
             $.ajax({
                 contentType: "application/json",
                 dataType: "json",
                 type: "Get",
-                url: "/Admin/Writer/WriterList",
+                url: "/Admin/Writer/WriterList/",
                 success: function (func) {
-                    console.log(func);
+                    let writers = jQuery.parseJSON(func);
+                    console.log(writers);
+                    let tableHtml = "<table class=table table-bordered> <tr><th>Yazar ID</th> <th>Yazar Adı</th> </tr>";
+                    $.each(writers, (index, value) => {
+                        tableHtml += `<tr><td>${value.Id}</td> <td>${value.Name}</td></tr>`
+                    });
+                    tableHtml += "</table>";
+                    $("#writerlist").html(tableHtml);
+
                 }
             });
         });
