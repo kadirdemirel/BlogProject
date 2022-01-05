@@ -21,6 +21,13 @@ namespace PresentationLayer.Areas.Admin.Controllers
             return Json(jsonWriters);
         }
 
+        public IActionResult GetWriterById(int id)
+        {
+            var findWriter = writers.FirstOrDefault(x => x.Id == id);
+            var jsonWriters = JsonConvert.SerializeObject(findWriter);
+            return Json(jsonWriters);
+        }
+
         public static List<WriterModel> writers = new List<WriterModel>
         {
             new WriterModel

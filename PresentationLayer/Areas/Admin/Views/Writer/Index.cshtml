@@ -8,13 +8,21 @@
 <br />
 
 <button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesi</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-success">Yazar Getir</button>
 <br />
 <br />
 
 <div id="writerlist">
     Buraya yazarlar gelecek
 </div>
-
+<br />
+<div id="writerget">
+    Buraya 1 yazar gelecek
+</div>
+<br />
+<div>
+    <input type="text" id="id" placeholder="Yazar Id Değerini Girin" class="form-control" />
+</div>
 @section scripts{
     <script>
 /*        const { writer } = require("repl");*/
@@ -38,5 +46,20 @@
                 }
             });
         });
+
+        $('#btngetbyid').click(x => {
+            let id = $("#id").val();
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: "/Admin/Writer/GetWriterById/",
+                data: { id: id },
+                success: function (func) {
+                    let writer = jQuery.parseJSON(func);
+                    console.log(writer);
+                }
+            })
+        })
     </script>
 }
