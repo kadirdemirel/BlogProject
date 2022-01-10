@@ -25,7 +25,7 @@
 </div>
 @section scripts{
     <script>
-/*        const { writer } = require("repl");*/
+        /*        const { writer } = require("repl");*/
 
         $('#btngetlist').click(function () {
             $.ajax({
@@ -58,6 +58,9 @@
                 success: function (func) {
                     let writer = jQuery.parseJSON(func);
                     console.log(writer);
+
+                    let getValue = `<table class=table table-bordered> <tr> <th> Yazar ID </th> <th>Yazar Adı</th></tr> <tr><td>${writer.Id}</td><td>${writer.Name}</td></tr></table>`;
+                    $("#writerget").html(getValue);
                 }
             })
         })
