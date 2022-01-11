@@ -9,6 +9,8 @@
 
 <button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesi</button>
 <button type="button" id="btngetbyid" class="btn btn-outline-success">Yazar Getir</button>
+<button type="button" id="btnaddwriter" class="btn btn-outline-info">Yazar Ekle</button>
+<button type="button" id="btndeletewriter" class="btn btn-outline-info">Yazar Sil</button>
 <br />
 <br />
 
@@ -23,8 +25,22 @@
 <div>
     <input type="text" id="id" placeholder="Yazar Id Değerini Girin" class="form-control" />
 </div>
+<br />
+<div>
+    <input type="text" class="form-control" id="txtWriterId" placeholder="Yazar ID" />
+
+    <input type="text" class="form-control" id="txtWriterName" placeholder="Yazar Adı" />
+    <br />
+
+</div>
+<br />
+<div>
+    <input type="text" class="form-control" id="txtId" placeholder="Silinecek Yazar ID" />
+</div>
 @section scripts{
     <script>
+        const { load } = require("mime");
+
         /*        const { writer } = require("repl");*/
 
         $('#btngetlist').click(function () {
@@ -63,6 +79,39 @@
                     $("#writerget").html(getValue);
                 }
             })
-        })
+        });
+
+        $('#btnaddwriter').click(function () {
+
+            let writer = {
+                Id: $("#txtWriterId").val(),
+                Name: $("#txtWriterName").val()
+            };
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/Writer/AddWriter/",
+                data: writer,
+                success: function (func) {
+                    let result = jQuery.parseJSON(func);
+                    alert("Yazar Eklendi");
+                }
+            })
+
+        });
+        $('#btndeletewriter').click(x => {
+            let id = $("#txtId").val();
+
+            $.ajax({
+                url: "/Admin/Writer/DeleteWriter/" + id,
+                type: "post",
+                dataType: "json",
+                success: function (func) {
+                    /* let result = jQuery.parseJSON(func);*/
+                    alert("Yazar Silindi");
+                }
+            });
+        });
+    
     </script>
 }

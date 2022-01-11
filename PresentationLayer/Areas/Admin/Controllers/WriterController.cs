@@ -27,6 +27,19 @@ namespace PresentationLayer.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(findWriter);
             return Json(jsonWriters);
         }
+        [HttpPost]
+        public IActionResult AddWriter(WriterModel writerModel)
+        {
+            writers.Add(writerModel);
+            var jsonWriters = JsonConvert.SerializeObject(writerModel);
+            return Json(jsonWriters);
+        }
+        public IActionResult DeleteWriter(int id)
+        {
+            var writer = writers.FirstOrDefault(x => x.Id == id);
+            writers.Remove(writer);
+            return Json(writer);
+        }
 
         public static List<WriterModel> writers = new List<WriterModel>
         {
