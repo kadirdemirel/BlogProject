@@ -11,6 +11,7 @@
 <button type="button" id="btngetbyid" class="btn btn-outline-success">Yazar Getir</button>
 <button type="button" id="btnaddwriter" class="btn btn-outline-info">Yazar Ekle</button>
 <button type="button" id="btndeletewriter" class="btn btn-outline-info">Yazar Sil</button>
+<button type="button" id="btnupdatewriter" class="btn btn-outline-warning">Yazar Güncelle</button>
 <br />
 <br />
 
@@ -37,9 +38,15 @@
 <div>
     <input type="text" class="form-control" id="txtId" placeholder="Silinecek Yazar ID" />
 </div>
+<br />
+<input type="text" id="txtId1" class="form-control" placeholder="Güncellenecek ID" />
+<input type="text" id="txtName1" class="form-control" placeholder="Güncellenecek Ad" />
+<br />
 @section scripts{
     <script>
-        const { load } = require("mime");
+
+
+        /*      const { load } = require("mime");*/
 
         /*        const { writer } = require("repl");*/
 
@@ -112,6 +119,25 @@
                 }
             });
         });
-    
+
+        $('#btnupdatewriter').click(function () {
+
+            let writer = {
+                Id: $("#txtId1").val(),
+                Name: $("#txtName1").val()
+
+            };
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/Writer/UpdateWriter/",
+                data: writer,
+                success: function (funk) {
+                    alert("Güncelleme yapıldı");
+                }
+            });
+
+        });
+
     </script>
 }

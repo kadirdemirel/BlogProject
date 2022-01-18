@@ -40,6 +40,15 @@ namespace PresentationLayer.Areas.Admin.Controllers
             writers.Remove(writer);
             return Json(writer);
         }
+        public IActionResult UpdateWriter(WriterModel writerModel)
+        {
+            var writer = writers.FirstOrDefault(x => x.Id == writerModel.Id);
+            writer.Name = writerModel.Name;
+            var jsonWriter = JsonConvert.SerializeObject(writerModel);
+            return Json(jsonWriter);
+
+
+        }
 
         public static List<WriterModel> writers = new List<WriterModel>
         {
